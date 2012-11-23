@@ -14,6 +14,7 @@ class KaplanMeier
     bins = SurvivalSample.bin_survivals(survivals)
 
     points = [[0,100]]
+    median = nil
 
     terms = Array.new
     n = survivals.length #Number we are considering at this time point (total surviving minus censored)
@@ -43,6 +44,12 @@ class KaplanMeier
 
       s_t = s_t * 100.0
 
+      #The median survival time is calculated as the smallest survival time 
+      #for which the survivor function is less than or equal to 0.5
+      if ( (s_t <= 50.0) && (median.nil?) ){
+        median = t
+      }
+
       #Add to plot points
       points << [t, prev] #Horizontal line from previous point
       points << [t, s_t] #Current point
@@ -50,7 +57,7 @@ class KaplanMeier
 
     end
 
-    return points
+    return points, median
   end
 
 end

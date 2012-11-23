@@ -18,10 +18,14 @@ Or install it yourself as:
 
 ## Usage
 
-To generate a Kaplan-Meier survival plot:
+To generate a Kaplan-Meier survival curve:
 
-    #survivals is an array of hashes. Each represents a sample, and must define :event (the event time) and :censored (boolean describing whether this sample is censored)
-    points = KaplanMeier.generate_plot_points(SurvivalSample.create_survival_objects(survivals))
+    #survivals is an array of hashes. Each hash represents a sample, and must define 
+    #   :event (the event time)
+    #   :censored (boolean describing whether this sample is right-censored)
+    survivals = [{:event => 21, :censored => false}, {:event => 13, :censored => true}, ... ]
+    survival_objs = SurvivalSample.create_survival_objects(survivals) #Create survival sample objects
+    points = KaplanMeier.generate_plot_points(survival_objs) #Generate the x,y coordinates of the survival curve
 
     #points is an array of [x,y] pairs for plotting. Use your favorite plotting library to plot the line graph.
 
