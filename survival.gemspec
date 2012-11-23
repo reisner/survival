@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'survival/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "Survival"
+  gem.name          = "survival"
   gem.version       = Survival::VERSION
   gem.authors       = ["Roman Eisner"]
   gem.email         = ["ithmatic@gmail.com"]
