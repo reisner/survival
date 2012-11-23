@@ -1,6 +1,6 @@
 # Survival
 
-TODO: Write a gem description
+Functions related to survival analysis, such as Kaplan-Meier estimator of survival curves.
 
 ## Installation
 
@@ -18,7 +18,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To generate a Kaplan-Meier survival plot:
+
+    #survivals is an array of hashes. Each represents a sample, and must define :event (the event time) and :censored (boolean describing whether this sample is censored)
+    points = KaplanMeier.generate_plot_points(SurvivalSample.create_survival_objects(survivals))
+
+    #points is an array of [x,y] pairs for plotting. Use your favorite plotting library to plot the line graph.
 
 ## Contributing
 
