@@ -15,7 +15,7 @@ class SurvivalSample
     @event = event
   end
 
-    def to_s
+  def to_s
     "Survival: {Event: #{@event}, Censored: #{@censored}}"
   end
 

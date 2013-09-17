@@ -9,7 +9,7 @@ class KaplanMeier
 
   #Creates the x,y pairs for plotting a survival curve, 
   #using the Kaplan-Meier method.
-  def self.generate_plot_points(survivals)
+  def self.generate_plot_points(survivals, include_horizontal=true)
 
     bins = SurvivalSample.bin_survivals(survivals)
 
@@ -51,7 +51,9 @@ class KaplanMeier
       }
 
       #Add to plot points
-      points << [t, prev] #Horizontal line from previous point
+      if include_horizontal
+        points << [t, prev] #Horizontal line from previous point
+      end
       points << [t, s_t] #Current point
       prev = s_t
 
