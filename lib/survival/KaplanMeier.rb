@@ -46,9 +46,9 @@ class KaplanMeier
 
       #The median survival time is calculated as the smallest survival time 
       #for which the survivor function is less than or equal to 0.5
-      if ( (s_t <= 50.0) && (median.nil?) ){
+      if ( (s_t <= 50.0) && (median.nil?) )
         median = t
-      }
+      end
 
       #Add to plot points
       if include_horizontal
