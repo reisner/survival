@@ -26,23 +26,27 @@ class KaplanMeier
       #Update counts for this time point
       d = 0 #Number that have died at this time point
       survs.each do |s|
-        n = n-1 
-
-        if not s.censored
+        if s.censored
           d = d + 1
         end
       end
 
       #Calculate the probability of survival for this time point
       s_t = 1
+
+      curr_term = (n - d).to_f / n
+      terms << curr_term
+      
       terms.each do |term|
         s_t = s_t * term
       end
 
-      curr_term = (n - d).to_f / n
-      terms << curr_term
 
       s_t = s_t * 100.0
+      
+      survs.each do |s|
+        n = n - 1
+      end
 
       #The median survival time is calculated as the smallest survival time 
       #for which the survivor function is less than or equal to 0.5
